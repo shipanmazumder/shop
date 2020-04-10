@@ -1,0 +1,39 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+<div class="container">
+  <div class="row">
+    <% if(prods.length>0){ %>
+        <% for(let product of prods){ %>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <p class="text-center"><%= product.title %></p>
+                <img src="<%= product.imgUrl %>" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p><%= product.price %>$</p>
+                </div>
+                <div class="caption">
+                    <p><%= product.description %></p>
+                </div>
+                <div class="caption">
+                    <div class="pull-left">
+                    <a href="/products/<%= product._id %>" class="btn btn-info ">Details</a>
+                    </div>
+                    <div class="pull-right">
+                    <%- include("../includes/add-to-cart.ejs",{product:product}) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    <% } else { %>
+        <h1>No Products Found</h1>
+    <% } %>
+  </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+           <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage,totalPage:totalPage}) %>
+        </div>
+    </div>
+</div>
+
+<%- include("../includes/end.ejs") %>

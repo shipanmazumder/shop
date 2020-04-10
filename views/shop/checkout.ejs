@@ -1,0 +1,55 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+    <div class="container">
+  <div class="row">
+    <% if(products.length>0){ %>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th class="text-center">Sl.</th>
+                <th class="text-center">Product Title</th>
+                <th class="text-center">Qty</th>
+                <th class="text-center">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+         <% var i=1; %>
+            <%  products.forEach(p => {%>
+                <tr>
+                    <td class="text-center"><%= i++ %></td>
+                    <td class="text-center"><%= p.productId.title %></td>
+                    <td class="text-center"><%= p.qty %></td>
+                    <td class="text-center"><%= p.productId.price %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right">Total Price: <%= totalSum %></td>
+            </tr>
+        </tfoot>
+    </table>
+    <% } else { %>
+        <h1>No Cart Found</h1>
+    <% } %>
+  </div>
+  <div class="row">
+  <div class="col-md-12 text-center">
+  
+    <form action="/createOrder" method="POST">
+        <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_zwBgEyGJGCbQ2lpeL8uSz6jp00vAm7mlkI"
+            data-amount="<%= totalSum * 100 %>"
+            data-name="Your Order"
+            data-description="All the items you ordewred"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-currency="usd">
+        </script>
+        </form>
+      
+  </div>
+  </div>
+</div>
+<%- include("../includes/end.ejs") %>

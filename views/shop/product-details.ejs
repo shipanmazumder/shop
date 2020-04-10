@@ -1,0 +1,32 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+<div class="container">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="/<%= product.imgUrl %>" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p><%= product.description %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <td class="text-center">Product Name:</td>
+                    <td class="text-center"><%= product.title %></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Product Price:</td>
+                    <td class="text-center"><%= product.price %></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <%- include("../includes/add-to-cart.ejs") %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+  </div>
+</div>
+
+<%- include("../includes/end.ejs") %>

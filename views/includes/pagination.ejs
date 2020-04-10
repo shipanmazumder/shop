@@ -1,0 +1,21 @@
+ <div class="col-md-12 text-center">
+    <ul class="pagination">
+        <li class="page-item  <% if (!hasPreviousPage) { %> disabled <% } %>">
+        <% if (hasPreviousPage) { %>
+            <a class="page-link" href="?page=<%= previousPage %>" tabindex="-1">Previous</a>
+        <% } else { %>
+            <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+        <% }  %>
+        </li>
+        <% for(var i=1; i<=totalPage; i++) {%>
+        <li class="page-item <% if (currentPage==i) { %> active <% } %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+        <% } %>
+        <li class="page-item <% if (!hasNextPage) { %> disabled <% } %>">
+        <% if (hasNextPage) { %>
+            <a class="page-link" href="?page=<%= nextPage %>">Next</a>
+        <% } else { %>
+            <a class="page-link" href="javascript:void(0)">Next</a>
+        <% } %>
+        </li>
+    </ul>
+</div>

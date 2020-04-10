@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    padding: 1rem;
+    margin: auto;
+}
+
+.navbar-default{
+     background-color: #00695c!important;
+}
+.navbar-default a{
+    color: #fff!important;
+}
+.navbar-default a:hover,
+.navbar-default a:active,
+.navbar-default a.active {
+    color: #ffeb3b!important;
+}
+.navbar-default .active{
+    color: #ffeb3b !important;
+}

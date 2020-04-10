@@ -1,0 +1,38 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+    <div class="container">
+  <div class="row">
+    <% if(orders.length>0){ %>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th class="text-center">Sl.</th>
+                <th class="text-center">Product Title</th>
+                <th class="text-center">Qty</th>
+                <th class="text-center">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%  orders.forEach(p => {%>
+                <tr>
+                    <td colspan="3" class="">#<%= p._id  %></td>
+                    <td  class=""><a href="/orders/<%= p._id %>">Invoice</a></td>
+                </tr>
+                <% var i=1; %>
+                <%  p.products.forEach(op => {%>
+                    <tr>
+                        <td class="text-center"><%= i++ %></td>
+                        <td class="text-center"><%= op.product.title %></td>
+                        <td class="text-center"><%= op.qty %></td>
+                        <td class="text-center"><%= op.product.price %></td>
+                    </tr>
+                <% }); %>
+            <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h1>No Orders Found</h1>
+    <% } %>
+  </div>
+</div>
+<%- include("../includes/end.ejs") %>

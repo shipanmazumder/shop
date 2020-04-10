@@ -1,0 +1,29 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <% if(msg!='') { %>
+           <div class="alert alert-<%= key %>"><%= msg %></div> 
+        <% } %>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="hidden" name="_csrf" value="<%= csrftoken %>">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" >
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" >
+            </div>
+            <div class="form-group">
+            Forgot Password? <a href="/reset">Click Here</a>
+            </div>
+            <div class="form-group">
+                <input type="submit"  class="form-control btn btn-primary" value="Login" >
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+<%- include("../includes/end.ejs") %>

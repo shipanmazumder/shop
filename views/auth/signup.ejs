@@ -1,0 +1,34 @@
+<%- include("../includes/head.ejs") %>
+<%- include("../includes/nav.ejs") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+       <% if(msg!='') { %>
+           <div class="alert alert-<%= key %>"><%= msg %></div> 
+        <% } %>
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="hidden" name="_csrf" value="<%= csrftoken %>">
+                <input type="name" class="form-control" name="name" id="name" placeholder="Name" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" >
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" >
+            </div>
+            <div class="form-group">
+                <label for="cp">Confirm Password</label>
+                <input type="password" name="cp" class="form-control" id="cp" placeholder="Confirm Password" >
+            </div>
+            <div class="form-group">
+                <input type="submit"  class="form-control btn btn-primary" value="Singn UP" >
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+<%- include("../includes/end.ejs") %>
